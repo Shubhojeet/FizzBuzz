@@ -17,6 +17,8 @@ public class MainActivity extends Activity {
     String buzzString = "Buzz";
     String fizzBuzzString = "FizzBuzz";
     String valueString;
+    int [] fizzArray = new int[10];
+    int fizzIndex = 0;
     int i;
 
     @Override
@@ -50,7 +52,7 @@ public class MainActivity extends Activity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void doButton(View view){
+    public void doButton(View view) {
         // Implement the function of the button here
         // Use numberOfValues, and create a string array of both the numbers and words,
         // replacing the appropriate numbers with the words fizz or buzz
@@ -61,34 +63,37 @@ public class MainActivity extends Activity {
 
         int numberOfValues = Integer.parseInt(editText.getText().toString());
 
-        for(i=0;i<numberOfValues;i++)
+        for (i = 1; i <= numberOfValues; i++) {
+
+            checkValue(i);
+
+        }
+    }
+
+    public void checkValue (int i)
+    {
+
+        if ((i%3 == 0) && (i%5 == 0))
         {
-            //valueString = String.valueOf(i%3);
-
-            if ((i%3 == 0) && (i%5 == 0))
-            {
-                valueString = fizzBuzzString;
-            }
-
-            else if (i%3 == 0)
-            {
-                valueString = fizzString;
-            }
-
-            else if (i%5 == 0)
-            {
-                valueString = buzzString;
-            }
-
-            else
-            {
-                valueString = String.valueOf(i);
-            }
-
-            textView.append(valueString + "\n"); // display in the
+            valueString = fizzBuzzString;
         }
 
+        else if (i%3 == 0)
+        {
+            valueString = fizzString;
+        }
 
+        else if (i%5 == 0)
+        {
+            valueString = buzzString;
+        }
 
+        else
+        {
+            valueString = String.valueOf(i);
+        }
+
+        textView.append(valueString + "\n"); // display in the
     }
+
 }
